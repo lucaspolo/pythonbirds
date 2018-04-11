@@ -102,27 +102,25 @@ class Motor:
         self.velocidade += 1
 
     def frear(self):
-        self.velocidade -= 2
-        self.velocidade = max(0, self.velocidade)
+        self.velocidade = max(0, self.velocidade - 2)
+
+
+DIRECOES = ['Norte', 'Leste', 'Sul', 'Oeste']
 
 
 class Direcao:
 
-    DIRECOES = ['Norte', 'Leste', 'Sul', 'Oeste']
-
     def __init__(self):
         self.__direcao = 0
-
-    @property
-    def valor(self):
-        return self.DIRECOES[self.__direcao]
+        self.valor = DIRECOES[self.__direcao]
 
     def girar_a_direita(self):
-        self.__direcao = (self.__direcao + 1) % len(self.DIRECOES)
+        self.__direcao = (self.__direcao + 1) % len(DIRECOES)
+        self.valor = DIRECOES[self.__direcao]
 
     def girar_a_esquerda(self):
-        self.__direcao = (self.__direcao - 1) % len(self.DIRECOES)
-
+        self.__direcao = (self.__direcao - 1) % len(DIRECOES)
+        self.valor = DIRECOES[self.__direcao]
 
 class Carro:
 
